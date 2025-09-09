@@ -12,17 +12,19 @@ Traditional RL maximizes expected return from the environment.
 
 Instead of relying only on environment reward:
 
-\[
-J(\pi) = \mathbb{E}\Big[\sum_t \gamma^t r_t^{\text{env}}\Big]
-\]
+Inline: $r_t^{\text{total}} = r_t^{\text{env}} \cdot R_t^{\text{cyber}}$
 
-CyberneticRL uses a **cybernetic reward multiplier**:
+$$
+J(\pi) = \mathbb{E}\Big[\sum_t \gamma^t \, r_t^{\text{env}}\Big]
+$$
 
-\[
-r_t^{\text{total}} = r_t^{\text{env}} \cdot R_t^{\text{cyber}}
-\]
+$$
+\theta_{t+1} = \theta_t + \alpha \,\nabla_\theta \!\Big( r_t^{\text{env}} \cdot R_t^{\text{cyber}} \Big)
+$$
 
-where \(R_t^{\text{cyber}}\) is derived from internal signals (grad norms, entropy, contraction, etc.).
+$$
+V(\theta) = \mathbb{E}[L(\pi_\theta)] + \lambda \,\Omega(\theta)
+$$
 
 ---
 
